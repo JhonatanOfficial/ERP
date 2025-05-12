@@ -1,0 +1,19 @@
+@use "sass:map";
+
+$breakpoints: (
+  "xs": 0,
+  "sm": 576px,
+  "md": 768px,
+  "lg": 992px,
+  "xl": 1200px,
+);
+
+@mixin responsive($key) {
+  @if map.has-key($breakpoints, $key) {
+    @media (min-width: map.get($breakpoints, $key)) {
+      @content;
+    }
+  } @else {
+    @warn "🚨 Breakpoint '#{$key}' não existe. Use: xs, sm, md, lg ou xl.";
+  }
+}
