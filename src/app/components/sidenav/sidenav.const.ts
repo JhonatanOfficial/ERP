@@ -9,17 +9,17 @@ export const SIDENAV_ITENS: ISidenavItem[] = [
   },
   {
     label: 'Sales',
-    href: '/',
+    href: '/sales',
     icon: faCashRegister,
   },
   {
     label: 'Finances',
-    href: '/',
+    href: '/finance',
     icon: faBook,
   },
   {
     label: 'Human Resources',
-    href: '/',
+    href: '/human-resources',
     icon: faPeopleGroup,
   },
 ];

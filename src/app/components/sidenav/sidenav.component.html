@@ -1,20 +1,31 @@
-<div class="sidenav-wrapper">
-  <h1>ERP {{ "Rota atual" }}</h1>
-
+<aside class="sidenav-wrapper" [class.expanded]="!viewMobile() && expanded()">
+  @if (!viewMobile()) {
+  <div class="header">
+    <button (click)="toggleMenu()">
+      <fa-icon class="menu-icon" [icon]="menuIcon" />
+    </button>
+  </div>
+  }
   <nav>
     <ul class="sidenav-itens">
       @for (item of data; track $index) {
       <li class="sidenav-item">
         <a
-        [href]="item.href"
-        [matTooltip]="viewMobile() ? item.label : null"
-        [matTooltipPosition]="'after'"
+          [href]="item.href"
+          [matTooltip]="item.label"
+          [matTooltipPosition]="viewMobile() ? 'above' : 'after'"
         >
-          <fa-icon class="icon-sidenav" [icon]="item.icon" />
-          <span class="label-sidenav"> {{ item.label }}</span>
+          <span
+            class="icon-wrapper"
+            [class.active]="currentRoute() === item.href && !viewMobile()"
+          >
+            <fa-icon class="icon-sidenav" [icon]="item.icon" />
+          </span>
+
+          <span class="label-sidenav-item"> {{ item.label }}</span>
         </a>
       </li>
       }
     </ul>
   </nav>
-</div>
+</aside>

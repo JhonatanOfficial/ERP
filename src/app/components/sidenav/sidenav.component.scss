@@ -2,29 +2,36 @@
 @use "../../theme/breakpoint" as *;
 
 $witdh_sidenav_colapsed: 40px;
-$witdh_sidenav_expanded: 200px;
+$witdh_sidenav_expanded: 250px;
 $size-icon: 18px;
 $font-size: 14px;
 
 .sidenav-wrapper {
-  padding: 10px 10px;
+  padding: 10px;
   background-color: var.$sidenav-background-color;
-  width: 100%;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.298);
 
   @include viewport("md") {
-    padding-inline: 25px;
-    width:  max-content;
+    width: $witdh_sidenav_colapsed;
+    transition: width 0.4s ease-in-out;
     min-height: 100dvh;
+    padding: 0;
   }
 
-  h1 {
-    display: none;
+  &.expanded {
+    width: $witdh_sidenav_expanded;
+  }
+  .header {
+    padding: 10px 11px 50px 11px;
 
-    @include viewport("md") {
-      display: block;
-      color: white;
-      margin: 10px 0 50px 0;
-      font-size: 1.5rem;
+    button {
+      all: unset;
+      cursor: pointer;
+
+      .menu-icon {
+        color: white;
+        font-size: 20px;
+      }
     }
   }
 
@@ -37,27 +44,47 @@ $font-size: 14px;
       flex-direction: column;
       color: white;
     }
+
     li {
       list-style: none;
+
+      @include viewport("md") {
+        width: 100%;
+      }
+
       a {
         all: unset;
         cursor: pointer;
         display: flex;
         align-items: center;
-        gap: 15px;
 
-        .icon-sidenav {
-          color: white;
-          font-size: $size-icon;
-          text-decoration: none;
+        .icon-wrapper {
+          display: flex;
+          justify-content: center;
+          width: $witdh_sidenav_colapsed;
+
+          &.active {
+            border-left: 2px white solid;
+          }
+
+          .icon-sidenav {
+            color: white;
+            font-size: $size-icon;
+            text-decoration: none;
+            padding-inline: 10px;
+          }
         }
-        span {
+
+        .label-sidenav-item {
           display: none;
 
           @include viewport("md") {
+            flex: 1;
             display: block;
             color: white;
             font-size: $font-size;
+            white-space: nowrap;
+            overflow: hidden;
           }
         }
       }
