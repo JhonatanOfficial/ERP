@@ -1,0 +1,66 @@
+@use "../../theme/colors.variables" as var;
+@use "../../theme/breakpoint" as *;
+
+$witdh_sidenav_colapsed: 40px;
+$witdh_sidenav_expanded: 200px;
+$size-icon: 18px;
+$font-size: 14px;
+
+.sidenav-wrapper {
+  padding: 10px 10px;
+  background-color: var.$sidenav-background-color;
+  width: 100%;
+
+  @include viewport("md") {
+    padding-inline: 25px;
+    width:  max-content;
+    min-height: 100dvh;
+  }
+
+  h1 {
+    display: none;
+
+    @include viewport("md") {
+      display: block;
+      color: white;
+      margin: 10px 0 50px 0;
+      font-size: 1.5rem;
+    }
+  }
+
+  nav > ul {
+    display: flex;
+    justify-content: space-around;
+    gap: 25px 0;
+
+    @include viewport("md") {
+      flex-direction: column;
+      color: white;
+    }
+    li {
+      list-style: none;
+      a {
+        all: unset;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+        .icon-sidenav {
+          color: white;
+          font-size: $size-icon;
+          text-decoration: none;
+        }
+        span {
+          display: none;
+
+          @include viewport("md") {
+            display: block;
+            color: white;
+            font-size: $font-size;
+          }
+        }
+      }
+    }
+  }
+}

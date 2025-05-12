@@ -1,0 +1,20 @@
+<div class="sidenav-wrapper">
+  <h1>ERP {{ "Rota atual" }}</h1>
+
+  <nav>
+    <ul class="sidenav-itens">
+      @for (item of data; track $index) {
+      <li class="sidenav-item">
+        <a
+        [href]="item.href"
+        [matTooltip]="viewMobile() ? item.label : null"
+        [matTooltipPosition]="'after'"
+        >
+          <fa-icon class="icon-sidenav" [icon]="item.icon" />
+          <span class="label-sidenav"> {{ item.label }}</span>
+        </a>
+      </li>
+      }
+    </ul>
+  </nav>
+</div>
