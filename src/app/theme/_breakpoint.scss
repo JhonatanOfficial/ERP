@@ -8,12 +8,12 @@ $breakpoints: (
   "xl": 1200px,
 );
 
-@mixin responsive($key) {
+@mixin viewport($key) {
   @if map.has-key($breakpoints, $key) {
     @media (min-width: map.get($breakpoints, $key)) {
       @content;
     }
   } @else {
-    @warn "🚨 Breakpoint '#{$key}' não existe. Use: xs, sm, md, lg ou xl.";
+    @warn "🚨 Viewport '#{$key}' não existe. Use: xs, sm, md, lg ou xl.";
   }
 }
